@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Task01 volume </title>
+</head>
+<style>
+        .content {
+          max-width: 500px;
+          margin: auto;
+        }
+        </style>
+        <body>
+        
+        <div class="content">
+                <p><h1>Input radius value:</h1></p>
+                <form action="" method="post" id="MyForm">
+                    <label for="radius">Radius[max of 149px]</label><input type="number" name="radius" id="radius" required;
+                        autofocus;><br>
+                    <label for="volume">Volume</label><input type="text" name="volume" id="volume">
+                    <input type="submit" value="Calculate" id="submit">
+                    <button onclick="Draw()">Draw</button>
+                    <button onclick="Clear()">Clear</button>
+                </form>
+                <canvas id="myCanvas" width="400" height="300" style="border:1px solid #d3d3d3;">
+        </div>
+        
+        
+
+<body>
+    
+
+
+        <script>
+
+            window.onload = document.getElementById('MyForm').onsubmit = volume_sphere;
+
+
+            function volume_sphere() {
+                var volume;
+                var radius = document.getElementById('radius').value;
+                radius = Math.abs(radius);
+                volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+                volume = volume.toFixed(4);
+                document.getElementById('volume').value = volume;
+                return false;
+            }
+            function Draw() {
+                var Rvalue = document.getElementById('radius').value | 0;
+                if (Rvalue < 150) {
+                    var c = document.getElementById("myCanvas");
+                    var ctx = c.getContext("2d");
+                    ctx.beginPath();
+                    ctx.arc(200, 150, Rvalue, 0, 2 * Math.PI);
+                    ctx.stroke();
+                } else {
+                    alert("radius is too big to Draw ")
+                }
+            }
+            function Clear() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                ctx.clearRect(0, 0, 400, 300);
+                ctx.restore();
+
+            }
+
+
+
+
+        </script>
+
+
+</body>
+
+</html>
